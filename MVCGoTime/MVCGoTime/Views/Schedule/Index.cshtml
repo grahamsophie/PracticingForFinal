@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MVCGoTime.Models.FootballSchedule>
+@*Added the line above*@
+
+
+@{
+    ViewBag.Title = (Model.First().Season) + "Schedule";     
+    var color = "white";
+    var glyph = "glyphicon-globe";
+}
+
+<h2 style ="text-align:center">OU Football Schedule for @Model.First().Season</h2>                      @*Erased what was inside the <h2> stuff and replaced it with what is there now.*@
+   
+                                                         @*Created everything within the foreach statement*@   
+ 
+@foreach (var item in Model)                                                                                                                                          
+{   if (item.IsHomeGame)
+    {                                                                                                                                               
+        color = "darkred";                                                                                                                          
+        glyph = "glyph-icon-home";                                                                                                                       
+    }                                                                                                                                               
+    else                                                                                                                                           
+    {                                                                                                                                               
+        color = "black";                                                                                                                           
+        glyph = "glyphicon-globe";                                                                                                                                                                                                                                                                            @*//*@
+    }                                                                                                                                              
+                                                                                                                                                    
+                                                                                                                                                    @*//Div starter will be given. I need to fill it in.*@
+    <div class="card" style= "width: 200px; height: 255px; float: left; background-color:@color; padding: 5px; margin: 5px; border-radius:25px;">   @*//Added everything after style*@
+        <div class="card-body">                                                                                                                     @*//*@
+            <span class="@("glyphicon " + glyph)" style="color:white; font-size:2.2em;"></span>                                                     @*//Added everything in this line.*@
+            @if (item.Opponent.Trim().ToLower() == "texas")                                                                                         
+            {                                                                                                                                       @*//Added this IF statement*@
+                <img class="card-img-top" style="width:55%;" src="https://www.thelostogle.com/wp-content/uploads/2010/02/texas-longhorn-logo-450x225.jpg" alt="Horns Down">   
+                                                                                                                                                    @*//Added everything after src.*@
+            }                                                                                                                                       @*//*@                
+            <h5 class="card-title">OU vs. @item.Opponent</h5>                                                                                       @*//Added the OU vs...*@
+            <p class="card-text">@item.Date.ToLongDateString()</p>                                                                                  @*//Removed the content inside and replaced it with @item.Date*@
+        </div>                                                                                                                                      @*//*@
+    </div>                                                                                                                                          @*//*@
+}                                                                                                                                                   @*//*@
+
+<div class="row"></div>                                                                                                                             @*//This part added the © 2019 - My ASP.NET Application to the bottom of the screen.*@    
+                                                                                                                                                
